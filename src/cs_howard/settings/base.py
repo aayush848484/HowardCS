@@ -7,9 +7,12 @@ https://docs.djangoproject.com/en/dev/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/dev/ref/settings/
 """
-from django.core.urlresolvers import reverse_lazy
+
 from os.path import dirname, join, exists
+
+from django.urls import reverse_lazy
 from machina import MACHINA_MAIN_TEMPLATE_DIR, MACHINA_MAIN_STATIC_DIR
+
 
 
 # Build paths inside the project like this: join(BASE_DIR, "directory")
@@ -77,20 +80,17 @@ INSTALLED_APPS = (
 
     'profiles',
     'accounts',
-
 )
 
-MIDDLEWARE_CLASSES = (
+MIDDLEWARE = [
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-
     'machina.apps.forum_permission.middleware.ForumPermissionMiddleware',
-)
+]
 
 ROOT_URLCONF = 'cs_howard.urls'
 
@@ -152,3 +152,7 @@ HAYSTACK_CONNECTIONS = {
         'ENGINE': 'haystack.backends.simple_backend.SimpleEngine',
     },
 }
+
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+)

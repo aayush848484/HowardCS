@@ -18,7 +18,7 @@ urlpatterns = [
     url(r'^$', views.HomePage.as_view(), name='home'),
     url(r'^about/$', views.AboutPage.as_view(), name='about'),
     url(r'^users/', include(profiles.urls, namespace='profiles')),
-    url(r'^admin/', include(admin.site.urls)),
+    url(r'^admin/', admin.site.urls),
     url(r'^', include(accounts.urls, namespace='accounts')),
     url(r'^forum/', include(board.urls)),
 ]
@@ -27,9 +27,11 @@ urlpatterns = [
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 # If django Debug is True, add the debug toolbar for convenience.
-if settings.DEBUG:
+"""
+if not settings.DEBUG:
     import debug_toolbar
 
     urlpatterns += [
         url(r'^__debug__/', include(debug_toolbar.urls)),
     ]
+"""
