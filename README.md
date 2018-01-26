@@ -1,14 +1,15 @@
 
 
-# cs_howard
+# Howard University Computer Science
 
-cs_howard is a _short description_. It is built with [Python][0] using the [Django Web Framework][1].
+Computer Science Howard is a web-application that facilitates the progress-tracking of students. It is built with [Python][0] using the [Django Web Framework][1].
 
 This project has the following basic apps:
 
-* App1 (short desc)
-* App2 (short desc)
-* App3 (short desc)
+* User Accounts (Manages the User-accounts of the students.)
+* Events (Events application to CRUD Events, which can be registered by students) [In Progress.]
+* Blogs (Blogs application to maintain a basic blog to allow students to write about interesting topics in the field of CS.)[In Progress]
+* Forums (Discussion Forum to discuss about issues related class-assignments to professor-reliability) [In Progress.]
 
 ## Installation
 
@@ -28,9 +29,11 @@ Run migrations:
 
     python manage.py migrate
 
-### Detailed instructions
+### Note
+Tangled dependencies of packages used on different versions of Django. 
 
-Take a look at the docs for more information.
+Fork the repo and send pull requests for contributing to this project.
+
 
 [0]: https://www.python.org/
 [1]: https://www.djangoproject.com/
