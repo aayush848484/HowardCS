@@ -1,9 +1,16 @@
 from django.conf.urls import url
+from rest_framework import routers
 
 from . import views
 from django.conf.urls import include
 
 app_name = 'accounts'
+
+# Router for the API Interface.
+"""
+router = routers.DefaultRouter()
+router.register(r'users', UserViewSet)
+"""
 
 urlpatterns = [
     url(r'^login/$', views.LoginView.as_view(), name="login"),
@@ -15,6 +22,10 @@ urlpatterns = [
         name='password-reset'),
     url(r'^password-reset-done/$', views.PasswordResetDoneView.as_view(),
         name='password-reset-done'),
-    url(r'^password-reset/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$$', views.PasswordResetConfirmView.as_view(),  # NOQA
+    url(r'^password-reset/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$$',
+        views.PasswordResetConfirmView.as_view(),  # NOQA
         name='password-reset-confirm'),
+    # url(r'^oauth/', include('social_django.urls', namespace='social')),
+    # url(r'^api-auth/', include('rest_framework.urls')),
+    # url('^api/', include(router.urls))
 ]

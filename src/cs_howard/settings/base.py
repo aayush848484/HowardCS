@@ -13,8 +13,6 @@ from os.path import dirname, join, exists
 from django.urls import reverse_lazy
 from machina import MACHINA_MAIN_TEMPLATE_DIR, MACHINA_MAIN_STATIC_DIR
 
-
-
 # Build paths inside the project like this: join(BASE_DIR, "directory")
 BASE_DIR = dirname(dirname(dirname(__file__)))
 STATICFILES_DIRS = [join(BASE_DIR, 'static'),
@@ -55,15 +53,15 @@ import environ
 
 env = environ.Env()
 
-
 env_file = join(dirname(__file__), 'local.env')
 if exists(env_file):
     environ.Env.read_env(str(env_file))
 
-
 SECRET_KEY = env('SECRET_KEY')
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    '*'
+]
 
 INSTALLED_APPS = (
     'django.contrib.auth',
@@ -80,6 +78,10 @@ INSTALLED_APPS = (
 
     'profiles',
     'accounts',
+
+    'rest_framework',
+    
+    'event_rsvp'
 )
 
 MIDDLEWARE = [
@@ -153,6 +155,19 @@ HAYSTACK_CONNECTIONS = {
     },
 }
 
+"""
 AUTHENTICATION_BACKENDS = (
+    'social_core.backends.open_id.OpenIdAuth',
+    'social_core.backends.github.GithubOAuth2',
     'django.contrib.auth.backends.ModelBackend',
 )
+
+SOCIAL_AUTH_GITHUB_KEY = '5ca5d8a5924d670607ec'
+SOCIAL_AUTH_GITHUB_SECRET = '13f7eb4ed89c8e82db34a9b27077ac51c7c509d6'
+
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+    ]
+}
+"""

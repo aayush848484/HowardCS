@@ -1,6 +1,6 @@
 <li {% if active_link == "Home" %}class="active"{% endif %}><a href="{% url 'home' %}">Home</a></li>
 <li {% if active_link == "MarketPlace" %}class="active"{% endif %}><a href="#">MarketPlace</a></li>
-<li {% if active_link == "Events" %}class="active"{% endif %}><a href="#">Events</a></li>
+<li {% if active_link == "Events" %}class="active"{% endif %}><a href="{% url 'event_rsvp:rsvp_event_list' %}">Events</a></li>
 <li {% if active_link == "Spotlights" %}class="active"{% endif %}><a href="#">Spotlights</a></li>
 <li {% if active_link == "Forum" %}class="active"{% endif %}><a href="forum">Forum</a></li>
 <li {% if active_link == "Search" %}class="active"{% endif %}><a href="Search">Search</a></li>

@@ -21,6 +21,7 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^', include(accounts.urls, namespace='accounts')),
     url(r'^forum/', include(board.urls)),
+    url(r'^events/', include('event_rsvp.urls', namespace='event_rsvp'))
 ]
 
 # Static files such as user-profile photo to be served in development
